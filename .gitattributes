@@ -1,7 +1,3 @@
-# This will force git to recheck and "reapply" gitattributes changes.
-git rm --cached -r .
-git add -A
-
 # Unity
 *.cginc              text
 *.cs                 text diff=csharp
@@ -129,4 +125,18 @@ git add -A
 *.skel.bytes        binary
 
 # testing
-*.yaml linguist-detectable=false
+*.mat                linguist-detectable=false
+*.anim               linguist-detectable=false
+*.unity              linguist-detectable=false
+*.prefab             linguist-detectable=false
+*.asset              linguist-detectable=false
+*.meta               linguist-detectable=false
+*.controller         linguist-detectable=false
+*.physicMaterial2D   linguist-detectable=false
+*.physicMaterial     linguist-detectable=false
+*.physicsMaterial2D  linguist-detectable=false
+*.physicsMaterial    linguist-detectable=false
+
+# This will force git to recheck and "reapply" gitattributes changes.
+git rm --cached -r .
+git add -A
