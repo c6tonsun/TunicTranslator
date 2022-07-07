@@ -136,6 +136,8 @@
 *.physicMaterial     linguist-detectable=false
 *.physicsMaterial2D  linguist-detectable=false
 *.physicsMaterial    linguist-detectable=false
+*.YAML    linguist-detectable=false
+
 
 # This will force git to recheck and "reapply" gitattributes changes.
 git rm --cached -r .
