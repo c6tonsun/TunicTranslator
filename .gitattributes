@@ -1,0 +1,4 @@
+*.prefab linguist-detectable=false
+*.asset linguist-detectable=false
+*.meta linguist-detectable=false
+*.unity linguist-detectable=false
