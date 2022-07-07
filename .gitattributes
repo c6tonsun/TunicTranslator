@@ -127,3 +127,6 @@ git add -A
 
 # Spine export file for Unity
 *.skel.bytes        binary
+
+# testing
+*.yaml linguist-detectable=false
