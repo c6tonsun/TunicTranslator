@@ -1,48 +1,51 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PointerMover : MonoBehaviour
 {
-    public Transform phoneme;
-    Vector3 _newPos;
-    public float _originalX, _offsetX;
-    int  _counter = 0;
+    const int SELECTED = 0, SELECTABLE = 1;
+    const string POINTER = "v", CLEAR = " ";
+
+    Color _selectable, _selected;
+
+    public int _index;
+    public int Index
+    {
+        get 
+        {
+            return _index;
+        }
+        set 
+        {
+            if (value < transform.childCount)
+                _index = value;
+            else
+                _index = 0;
+
+            UpdatePointer();
+        }
+    }
 
     void Start()
     {
-        _originalX = phoneme.GetChild(0).position.x;
-        _offsetX = Mathf.Abs(_originalX - phoneme.GetChild(1).position.x);
-
-        _newPos = transform.position;
-        _newPos.x = _originalX;
-        transform.position = _newPos;
+        _selected = transform.GetChild(SELECTED).GetComponent<Image>().color;
+        _selectable = transform.GetChild(SELECTABLE).GetComponent<Image>().color;
     }
 
-    public void MovePointer()
+    void UpdatePointer()
     {
-        _counter++;
-
-        if (_counter < phoneme.childCount)
+        for (int i = 0; i < transform.childCount; i++)
         {
-            _newPos.x += _offsetX;
-            transform.position = _newPos;
+            if (i == _index)
+            {
+                transform.GetChild(i).GetComponent<Image>().color = _selected;
+                transform.GetChild(i).GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().text = POINTER;
+            }
+            else
+            {
+                transform.GetChild(i).GetComponent<Image>().color = _selectable;
+                transform.GetChild(i).GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().text = CLEAR;
+            }
         }
-        else
-        {
-            _counter = 0;
-            _newPos.x = _originalX;
-            transform.position = _newPos;
-        }
-
-    }
-
-    public void ResetPointer()
-    {
-        _counter = phoneme.childCount;
-        MovePointer();
-    }
-
-    public int GetCounter()
-    {
-        return _counter;
     }
 }

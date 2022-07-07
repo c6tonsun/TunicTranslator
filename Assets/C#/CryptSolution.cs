@@ -7,7 +7,7 @@ public class CryptSolution : MonoBehaviour
     string _vowelStr, _consonantStr;
     PointerMover _pointerMover;
 
-    void Start()
+    private void Start()
     {
         _pointerMover = FindObjectOfType<PointerMover>();
     }
@@ -34,7 +34,7 @@ public class CryptSolution : MonoBehaviour
         }
     }
 
-    public void Clear()
+    public void ClearCrypt()
     {
         if (_cryptVowel)
             DestroyImmediate(_cryptVowel.gameObject);
@@ -44,13 +44,13 @@ public class CryptSolution : MonoBehaviour
 
         _vowelStr = "";
         _consonantStr = "";
-        SetPhonemes();
     }
 
     public void SetPhonemes()
     {
-        phoneme1.GetChild(_pointerMover.GetCounter()).GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().text = string.Concat(_consonantStr, _vowelStr);
-        phoneme2.GetChild(_pointerMover.GetCounter()).GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().text = string.Concat(_vowelStr, _consonantStr);
+        phoneme1.GetChild(_pointerMover.Index).GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().text = string.Concat(_consonantStr, _vowelStr);
+        phoneme2.GetChild(_pointerMover.Index).GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().text = string.Concat(_vowelStr, _consonantStr);
+        _pointerMover.Index++;
     }
 
     public void ClearPhonemes()
@@ -60,5 +60,6 @@ public class CryptSolution : MonoBehaviour
             phoneme1.GetChild(i).GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().text = "";
             phoneme2.GetChild(i).GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().text = "";
         }
+        _pointerMover.Index = 0;
     }
 }
