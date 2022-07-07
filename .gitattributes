@@ -123,22 +123,3 @@
 
 # Spine export file for Unity
 *.skel.bytes        binary
-
-# testing
-*.mat                linguist-detectable=false
-*.anim               linguist-detectable=false
-*.unity              linguist-detectable=false
-*.prefab             linguist-detectable=false
-*.asset              linguist-detectable=false
-*.meta               linguist-detectable=false
-*.controller         linguist-detectable=false
-*.physicMaterial2D   linguist-detectable=false
-*.physicMaterial     linguist-detectable=false
-*.physicsMaterial2D  linguist-detectable=false
-*.physicsMaterial    linguist-detectable=false
-*.YAML    linguist-detectable=false
-
-
-# This will force git to recheck and "reapply" gitattributes changes.
-git rm --cached -r .
-git add -A
